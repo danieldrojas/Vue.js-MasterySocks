@@ -7,5 +7,45 @@ var app = new Vue({ //ne
         image: './vmSocks.jpeg',
         link: 'https://google.com',
         inventory: 8,
+        sizes: [
+            {
+                size: "Small",
+                id: "s"
+
+            }, {
+                size: "Medium",
+                id: 'm'
+            },
+            {
+                size: "Large",
+                id: "l"
+            }
+        ],
+        socks: [
+            {
+                id: 1,
+                color: "green",
+                image: "./vmSocks.jpeg"
+            },
+            {
+                id: 2,
+                color: "blue",
+                image: "./blueSock.jpeg"
+            }
+
+        ],
+        cart: 10,
+    },
+    methods: {
+        addToCart() {
+            this.cart += 1
+
+        },
+        updateSock(image) {
+           this.image = image
+        },
+        subtractFromCart() {
+            this.cart -= 1
+        }
     }
-}) 
+})
