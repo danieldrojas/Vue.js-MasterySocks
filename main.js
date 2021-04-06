@@ -6,7 +6,8 @@ var app = new Vue({ //ne
         description: 'Socks are a fluffy piece of clothe that covers the feet',
         image: './vmSocks.jpeg',
         link: 'https://google.com',
-        inventory: 8,
+        inStock: false,
+        inventory:0,
         sizes: [
             {
                 size: "Small",

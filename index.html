@@ -23,25 +23,32 @@
                 <p v-if='inventory > 10'>In Stock</p>
                 <p v-else-if='inventory <= 10 && inventory > 0 '>Almost Sold
                     Out, {{inventory}} left</p>
-                <p v-else='inventory'>Out of Stock</p>
+                <p v-else='inventory'
+                :class="{ outStock: !inStock}"
+                >Out of Stock</p>
 
                 <ul>
                     <li v-for="size in sizes" :key="size.id" >{{ size.size }} </li>
                     
                 </ul>
 
-                <ul>
-                    <li style="list-style: none" v-for="sock in socks">
-                        <p @mouseover="updateSock(sock.image)">{{sock.color}}</p>
-
-                    </li>
-                </ul>
-
-                <div></div>
-   
+                <div
+                     v-for="sock in socks" 
+                     :key="sock.id"
+                     class="color-box"
+                     @mouseover="updateSock(sock.image)"
+                    :style="{ backgroundColor: sock.color}"
+                    >
+                </div>   
                 
-                <button v-on:click="addToCart">Add to Cart</button>
-                <button v-on:click="subtractFromCart">Move from Cart</button>
+                <button 
+                v-on:click="addToCart" 
+                :disabled="!inStock"
+                :class="{ disabledButton: !inStock}"           
+                >
+                Add to Cart
+                </button>
+                <!-- <button v-on:click="subtractFromCart">Move from Cart</button> -->
               
                 <div class="cart">
                     <p>Cart({{cart}})</p>
